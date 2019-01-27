@@ -23,6 +23,13 @@ class ReaderExample extends WordSpec with Matchers {
       greetKitty.run(catConfig) shouldBe "Hello [Mr Cat]."
     }
 
+    "composed/chained map" in {
+      val greetKitty: Reader[CatConfig, String] = catNameReader.map{name => s"Hello [$name]."}
+                                                               .map{greeting => s"${greeting} Hope you have a nice day."}
+
+      greetKitty.run(catConfig) shouldBe "Hello [Mr Cat]. Hope you have a nice day."
+    }
+
     "flatMap" in {
       val greetKitty: Reader[CatConfig, String] = catNameReader.map{name => s"Hello [$name]."}
 

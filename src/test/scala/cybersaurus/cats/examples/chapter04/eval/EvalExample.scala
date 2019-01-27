@@ -40,8 +40,4 @@ class EvalExample extends WordSpec with Matchers {
 
     value2 == value1 shouldBe isMemorized
   }
-
-  private def testMap(eval: Eval[Instant], isEager: Boolean, isMemorized: Boolean): Unit = {
-
-  }
 }
